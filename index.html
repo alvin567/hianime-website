@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;">
+    <meta name="description" content="HiAnime Community Support Guidelines - Comprehensive guide for users and helpers with interactive tools.">
+    <meta name="keywords" content="HiAnime, anime, support, guidelines, community, troubleshooting, FAQ, interactive">
+    <meta name="author" content="HiAnime Community">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="HiAnime Community Support Guidelines">
+    <meta property="og:description" content="Professional support guidelines and interactive tools for the HiAnime community.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hianime.support">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="canonical" href="https://hianime.support">
+    <title>HiAnime Community Support Guidelines</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/loading.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "HiAnime Community Support Guidelines",
+        "description": "Professional support guidelines and interactive tools for the HiAnime community",
+        "url": "https://hianime.support",
+        "publisher": {
+            "@type": "Organization",
+            "name": "HiAnime Community",
+            "url": "https://hianime.support"
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://hianime.support#search={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How do I get help with HiAnime?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Visit our support forums and use the ask-help channel for technical assistance."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are the community guidelines?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our guidelines emphasize respect, professionalism, and helpfulness in all interactions."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen" aria-live="polite" aria-label="Loading screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h2>Loading HiAnime Support...</h2>
+            <p>Preparing your support experience</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header role="banner">
+        <div class="container header-content">
+            <div class="logo-container" aria-label="HiAnime logo">
+                <img src="assets/logo.png" alt="HiAnime Logo" class="logo" loading="lazy">
+                <div class="logo-text">Hi<span>Anime</span></div>
+            </div>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="#main-content" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#user-guidelines" class="nav-link"><i class="fas fa-users"></i> User Guidelines</a></li>
+                    <li><a href="#helper-guidelines" class="nav-link"><i class="fas fa-hands-helping"></i> Helper Guidelines</a></li>
+                    <li><a href="#support-forums" class="nav-link"><i class="fas fa-comments"></i> Support Forums</a></li>
+                    <li><a href="#faq" class="nav-link"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                    <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button id="search-toggle" class="nav-btn" aria-label="Toggle Search" aria-expanded="false">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button id="theme-toggle" class="nav-btn" aria-label="Toggle Dark Mode" aria-pressed="false">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="mobile-menu-toggle" class="nav-btn mobile-only" aria-label="Toggle Menu" aria-expanded="false">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <!-- New Desktop Menu Dropdown -->
+                    <div class="desktop-menu">
+                        <button id="desktop-menu-toggle" class="nav-btn" aria-label="Open Menu" aria-expanded="false">
+                            <i class="fas fa-bars"></i> Menu
+                        </button>
+                        <div class="desktop-dropdown" id="desktop-dropdown" role="menu" aria-hidden="true">
+                            <a href="#faq" class="dropdown-item" role="menuitem">
+                                <i class="fas fa-question-circle"></i> FAQ
+                            </a>
+                            <a href="#contact" class="dropdown-item" role="menuitem">
+                                <i class="fas fa-envelope"></i> Contact
+                            </a>
+                            <button class="dropdown-item" onclick="document.getElementById('search-toggle').click()" role="menuitem">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Search Overlay -->
+        <div id="search-overlay" class="search-overlay" aria-modal="true" role="dialog" aria-label="Search overlay">
+            <div class="search-container" role="search">
+                <input type="text" id="search-input" placeholder="Search guidelines, FAQ, commands...">
+                <button id="search-clear" aria-label="Clear Search">
+                    <i class="fas fa-times"></i>
+                </button>
+                <button id="search-close" aria-label="Close Search">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="search-results" class="search-results" aria-live="polite"></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="main-content" class="hero" role="main">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Welcome to HiAnime Community Support</h1>
+                    <p>Your comprehensive guide to professional support, troubleshooting, and community guidelines. Get the help you need with our interactive tools and resources.</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">Main Sections</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Guidelines</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">FAQs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <a href="https://discord.com/channels/1202429437958946876/1202429440332660826/1434273088328962240" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/hero-image.png" alt="HiAnime Support Hero Image" class="hero-img" loading="lazy">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Features Grid -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Explore Our Support Resources</h2>
+            <div class="features-grid">
+                <div class="feature-card" data-section="user-guidelines">
+                    <div class="card-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-users"></i>
+                            <span>User Guidelines</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fas fa-user-friends"></i> User Guidelines</h3>
+                        <p>Learn how to seek support effectively and maintain professional communication within the community.</p>
+                        <a href="#user-guidelines" class="card-link">Read Guidelines <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-section="helper-guidelines">
+                    <div class="card-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>Helper Guidelines</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fas fa-headset"></i> Helper Guidelines</h3>
+                        <p>Professional conduct standards for community helpers and moderators.</p>
+                        <a href="#helper-guidelines" class="card-link">View Guidelines <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-section="interactive-quiz">
+                    <div class="card-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-brain"></i>
+                            <span>Interactive Quiz</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fas fa-brain"></i> Test Your Knowledge</h3>
+                        <p>Practice being a helper with our interactive quiz scenarios.</p>
+                        <a href="#interactive-quiz" class="card-link">Take Quiz <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-section="discord-tools">
+                    <div class="card-image">
+                        <div class="image-placeholder">
+                            <i class="fab fa-discord"></i>
+                            <span>Discord Tools</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fab fa-discord"></i> Discord Tools</h3>
+                        <p>Message formatting simulator and quick reference for Discord support.</p>
+                        <a href="#discord-simulator" class="card-link">Try Tools <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-section="troubleshooting">
+                    <div class="card-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>Troubleshooting</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fas fa-project-diagram"></i> Troubleshooting Flow</h3>
+                        <p>Step-by-step guides for common issues and problems.</p>
+                        <a href="#flowchart" class="card-link">View Flowchart <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-section="faq">
+                    <div class="card-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-question-circle"></i>
+                            <span>FAQ</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fas fa-question-circle"></i> Frequently Asked Questions</h3>
+                        <p>Quick answers to common support questions and issues.</p>
+                        <a href="#faq" class="card-link">Browse FAQ <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-section="support-forums">
+                    <div class="card-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-comments"></i>
+                            <span>Support Forums</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fas fa-comments"></i> Support Forums</h3>
+                        <p>Learn about forum tags, post management, and community support structure.</p>
+                        <a href="#support-forums" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-section="tools-resources">
+                    <div class="card-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-tools"></i>
+                            <span>Tools & Resources</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fas fa-tools"></i> Additional Tools</h3>
+                        <p>MalSync integration, support channels, and helpful resources.</p>
+                        <a href="#tools-resources" class="card-link">Explore Tools <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions Bar -->
+    <section class="quick-actions">
+        <div class="container">
+            <h3>Quick Actions</h3>
+            <div class="action-buttons">
+                <button class="action-btn" onclick="document.getElementById('search-input').focus()" aria-label="Search guidelines">
+                    <i class="fas fa-search"></i> Search Guidelines
+                </button>
+                <button class="action-btn" onclick="document.querySelector('.ref-toggle').click()" aria-label="Open quick reference">
+                    <i class="fas fa-book"></i> Quick Reference
+                </button>
+                <button class="action-btn" onclick="document.getElementById('theme-toggle').click()" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i> Toggle Theme
+                </button>
+                <button class="action-btn" onclick="document.querySelector('.progress-tracker').scrollIntoView()" aria-label="View progress">
+                    <i class="fas fa-chart-line"></i> View Progress
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="table-of-contents">
+            <h3>Table of Contents</h3>
+            <ul id="toc-list"></ul>
+        </div>
+
+        <!-- User Guidelines -->
+        <section id="user-guidelines" class="section">
+            <h2 class="section-title"><i class="fas fa-user-friends"></i> User Guidelines for Seeking Support <span class="reading-time">⏱️ 3 min read</span></h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title"><i class="fas fa-heart"></i> Be Respectful and Patient</h3>
+                <ul class="guideline-list">
+                    <li class="guideline-item">Be kind, patient, and respectful when interacting with volunteers.</li>
+                    <li class="guideline-item">Do not harass volunteers if you are uncomfortable with their assistance.</li>
+                    <li class="guideline-item">Politely ask for help when needed.</li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title"><i class="fas fa-info-circle"></i> Provide Complete Information</h3>
+                <ul class="guideline-list">
+                    <li class="guideline-item">Include attachments such as images, videos, or log files when applicable.</li>
+                    <li class="guideline-item">Provide detailed descriptions: browser used, extensions, steps to reproduce the issue, device specifications.</li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title"><i class="fas fa-code"></i> Backend Development Queries</h3>
+                <ul class="guideline-list">
+                    <li class="guideline-item">Do not ask about backend development (e.g., APIs, hosts).</li>
+                    <li class="guideline-item">Such questions will not be entertained by developers.</li>
+                </ul>
+            </div>
+            
+            <div class="highlight-box">
+                <strong>Important Note:</strong> These guidelines should be followed when asking for support. Non-compliance may result in having @No Support or higher punishments.
+            </div>
+            <div class="feedback-widget">
+                <div class="feedback-prompt">Was this helpful?</div>
+                <div class="feedback-buttons">
+                    <button class="feedback-btn" data-helpful="yes">👍 Yes</button>
+                    <button class="feedback-btn" data-helpful="no">👎 No</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Helper Guidelines -->
+        <section id="helper-guidelines" class="section">
+            <h2 class="section-title"><i class="fas fa-headset"></i> Professional Conduct for Helpers</h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title"><i class="fas fa-user-tie"></i> Maintain Professionalism</h3>
+                <ul class="guideline-list">
+                    <li class="guideline-item">Treat users like clients and provide a user-friendly experience.</li>
+                    <li class="guideline-item">Use clear, concise, and grammatically correct language.</li>
+                    <li class="guideline-item">Avoid hasty responses; research or consult other helpers if unsure.</li>
+                    <li class="guideline-item">Stay knowledgeable about the website and common issues.</li>
+                    <li class="guideline-item">Do not disclose sensitive information or discuss internal affairs outside staff channels.</li>
+                    <li class="guideline-item">Remain calm and composed, especially with difficult users.</li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title"><i class="fas fa-user-slash"></i> Handling Troublesome Users</h3>
+                <ul class="guideline-list">
+                    <li class="guideline-item">Apply @No Support role via command: <code>?nosupport &lt;UserID&gt;</code></li>
+                    <li class="guideline-item">Inform an Admin or Head Staff after applying the role.</li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title"><i class="fas fa-shield-alt"></i> Role Outside Support Channels</h3>
+                <ul class="guideline-list">
+                    <li class="guideline-item">Help prevent rule-breaking conversations and issue verbal warnings.</li>
+                    <li class="guideline-item">Report spam or major rule breaks to @Moderator.</li>
+                    <li class="guideline-item">Participate actively in community chats and uphold server rules.</li>
+                    <li class="guideline-item">Build a respectful persona; you may be promoted to @Moderator over time.</li>
+                    <li class="guideline-item">Do not interfere in moderation cases handled by @Moderators.</li>
+                </ul>
+            </div>
+            <div class="feedback-widget">
+                <div class="feedback-prompt">Was this helpful?</div>
+                <div class="feedback-buttons">
+                    <button class="feedback-btn" data-helpful="yes">👍 Yes</button>
+                    <button class="feedback-btn" data-helpful="no">👎 No</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Avoiding Spoon-feeding -->
+        <section class="section"> 
+            <h2 class="section-title"><i class="fas fa-utensil-spoon"></i> Avoiding Spoon-feeding</h2>
+            
+            <div class="subsection">
+                <p>Encourage independent problem-solving by guiding users through steps. Avoid providing direct solutions; instead, explain how to access features or settings.</p>
+                
+                <div class="correct-incorrect">
+                    <div class="incorrect-box">
+                        <h4 class="box-title"><i class="fas fa-times-circle"></i> Incorrect Approach</h4>
+                        <p><strong>Member:</strong> Can't navigate to my settings. Can you help set it up?</p>
+                        <p><strong>Helper:</strong> Sure, Here's a direct link & my preferences, you can copy it.</p>
+                    </div>
+                    
+                    <div class="correct-box">
+                        <h4 class="box-title"><i class="fas fa-check-circle"></i> Correct Approach</h4>
+                        <p><strong>Member:</strong> Can't navigate to my settings. Can you help set it up?</p>
+                        <p><strong>Helper:</strong> You may click on "this" feature to access the menu and customize it to your preference.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Forums -->
+        <section id="support-forums" class="section">
+            <h2 class="section-title"><i class="fas fa-comments"></i> Using Support Forums</h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title"><i class="fas fa-tags"></i> Support Tags</h3>
+                <p>Tags help organize queries by describing the user's support category.</p>
+                
+                <h4>User Tags:</h4>
+                <div class="tag-container">
+                    <div class="tag user-tag">❔ General Inquiry</div>
+                    <div class="tag user-tag">👤 Account</div>
+                    <div class="tag user-tag">📶 Streaming</div>
+                    <div class="tag user-tag">🤝 Feedback</div>
+                    <div class="tag user-tag">💡 Suggestion</div>
+                    <div class="tag user-tag">🪲 Bug</div>
+                    <div class="tag user-tag">🔨 Account Mute/Ban</div>
+                    <div class="tag user-tag">❗ Report Users</div>
+                    <div class="tag user-tag">📱 Mobile</div>
+                    <div class="tag user-tag">🖥️ Desktop</div>
+                </div>
+                
+                <h4>Staff Tags:</h4>
+                <div class="tag-container">
+                    <div class="tag staff-tag" data-status="critical">💬 Being Assisted</div>
+                    <div class="tag staff-tag">✅ Resolved</div>
+                    <div class="tag staff-tag" data-status="new">🆕 Crucial Information</div>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title"><i class="fas fa-tasks"></i> Managing Posts</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tag</th>
+                                <th>Description</th>
+                                <th>Usage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>💬 Being Assisted</strong></td>
+                                <td>Applied to new/unanswered posts</td>
+                                <td>Close after 12 hours if unanswered by the user</td>
+                            </tr>
+                            <tr>
+                                <td><strong>✅ Resolved</strong></td>
+                                <td>Applied when the query is answered or solved</td>
+                                <td>Close the post after resolving (do not lock)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>🆕 Crucial Information</strong></td>
+                                <td>For important announcements or critical info</td>
+                                <td>Only one post may be pinned at a time</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="section">
+            <h2 class="section-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions (Helper Edition)</h2>
+            
+            <div class="note">
+                <strong>Note:</strong> Ensure users disable adblockers when troubleshooting, as they may break site features.
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h4 class="faq-question"><i class="fas fa-closed-captioning"></i> 1. Missing Subtitles</h4>
+                    <div class="faq-answer">
+                        <p><strong>Cause:</strong> Adblocker blocking subtitles.</p>
+                        <p><strong>Solution:</strong> Disable adblocker and refresh the page. Check for multiple English subtitle options.</p>
+                        <button class="copy-discord" data-format="discord">📋 Copy for Discord</button>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h4 class="faq-question"><i class="fas fa-cog"></i> 2. Subtitles Settings Reset</h4>
+                    <div class="faq-answer">
+                        <p><strong>Cause:</strong> Blocked cookies or cookie blockers (e.g., Brave Shields).</p>
+                        <p><strong>Solution:</strong> Allow cookies and disable cookie blockers.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h4 class="faq-question"><i class="fas fa-play-circle"></i> 3. Continue Watching Not Working</h4>
+                    <div class="faq-answer">
+                        <p><strong>Cause:</strong> Blocked cookies or cookie blockers.</p>
+                        <p><strong>Solution:</strong> Allow cookies and disable cookie blockers/Brave Shields.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h4 class="faq-question"><i class="fas fa-envelope"></i> 4. No Verification Emails</h4>
+                    <div class="faq-answer">
+                        <p><strong>Commonly Affected:</strong> iCloudMail and HotMail users.</p>
+                        <p><strong>Solution:</strong> Forward the user's email ID to the designated admin for manual verification.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h4 class="faq-question"><i class="fas fa-file-export"></i> 5. MAL Export Not Working</h4>
+                    <div class="faq-answer">
+                        <p><strong>Cause:</strong> Incompatible .XML file from the website.</p>
+                        <p><strong>Solution:</strong> Inform users that the issue will not be fixed soon.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h4 class="faq-question"><i class="fas fa-expand"></i> 6. Fullscreen Not Working on Chrome (iOS)</h4>
+                    <div class="faq-answer">
+                        <p><strong>Cause:</strong> JWPlayer bug.</p>
+                        <p><strong>Solution:</strong> Use a different browser (e.g., Safari, Firefox, Opera).</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h4 class="faq-question"><i class="fas fa-spinner"></i> 7. Black Screen/Infinite Loading</h4>
+                    <div class="faq-answer">
+                        <p><strong>Solution:</strong> Clear the browser cache (via browser settings, not device settings for Android users).</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h4 class="faq-question"><i class="fas fa-user-plus"></i> 8. "Not Allowed to Do This" Error During Registration</h4>
+                    <div class="faq-answer">
+                        <p><strong>Cause:</strong> One account per IP address allowed within 24 hours.</p>
+                        <p><strong>Solution:</strong> Wait 24 hours before attempting to create another account.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Guidelines Quiz -->
+        <section id="interactive-quiz" class="section">
+            <h2 class="section-title"><i class="fas fa-brain"></i> Interactive Guidelines Quiz</h2>
+            <div class="interactive-quiz">
+                <h3>Test Your Knowledge</h3>
+                <div class="quiz-scenario">
+                    <p><strong>Scenario:</strong> User says: "Your website is trash, fix it now!"</p>
+                    <div class="quiz-options">
+                        <button class="option" data-correct="false">"You're rude, no help for you."</button>
+                        <button class="option" data-correct="true">"I understand you're frustrated. Could you share what specific issue you're facing?"</button>
+                        <button class="option" data-correct="false">Ignore them</button>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discord Webhook Simulator -->
+        <section id="discord-simulator" class="section">
+            <h2 class="section-title"><i class="fab fa-discord"></i> Discord Webhook Simulator</h2>
+            <div class="discord-simulator">
+                <div class="discord-preview">
+                    <div class="discord-header">
+                        <div class="discord-avatar helper-avatar"></div>
+                        <div class="discord-author">Helper</div>
+                    </div>
+                    <div class="discord-message" style="border-left: 3px solid #ff6b9d">
+                        I understand you're frustrated. Could you share what specific issue you're facing?
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Animated Flowcharts -->
+        <section id="flowchart" class="section">
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i> Troubleshooting Flowchart</h2>
+            <div class="flowchart">
+                <div class="flow-step" data-step="1">
+                    <span>Missing Subtitles?</span>
+                    <div class="flow-arrow"></div>
+                </div>
+                <div class="flow-step" data-step="2">
+                    <span>Disable Adblocker</span>
+                    <div class="flow-arrow"></div>
+                </div>
+                <div class="flow-step" data-step="3">
+                    <span>Refresh Page</span>
+                    <div class="flow-arrow"></div>
+                </div>
+                <div class="flow-step final" data-step="4">
+                    <span>Subtitles Working?</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real-time Code Formatter -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-code"></i> Discord Message Formatter</h2>
+            <div class="code-formatter">
+                <textarea id="discord-input" placeholder="Type your message here..."></textarea>
+                <div class="format-buttons">
+                    <button data-format="bold">**Bold**</button>
+                    <button data-format="italic">*Italic*</button>
+                    <button data-format="code">`Code`</button>
+                    <button data-format="codeblock">```Code Block```</button>
+                </div>
+                <div id="formatted-output"></div>
+            </div>
+        </section>
+
+        <!-- Progress Tracker -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> Progress Tracker</h2>
+            <div class="progress-tracker">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 30%"></div>
+                </div>
+                <div class="progress-text">3/10 sections completed</div>
+            </div>
+        </section>
+
+        <!-- Additional Tools -->
+        <section id="tools-resources" class="section">
+            <h2 class="section-title"><i class="fas fa-tools"></i> Additional Tools & Resources</h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title"><i class="fas fa-sync-alt"></i> MalSync</h3>
+                <ul class="guideline-list">
+                    <li class="guideline-item">A tool for syncing MAL/AniList accounts automatically.</li>
+                    <li class="guideline-item">Includes <strong>Discord Rich Presence</strong> to display streaming activity (requires MalSync browser extension).</li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title"><i class="fas fa-hashtag"></i> Support Channels</h3>
+                <ul class="guideline-list">
+                    <li class="guideline-item"><strong>⁠ask-help:</strong> For support queries.</li>
+                    <li class="guideline-item"><strong>⁠faqs:</strong> For pre-answered questions.</li>
+                    <li class="guideline-item"><strong>⁠status:</strong> For website downtime updates.</li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title"><i class="fas fa-tags"></i> Tags Catalog</h3>
+                <p>Use the <code>tags</code> command in <strong>⁠ask-help</strong> to view available support tags.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Quick Reference Sidebar -->
+    <div class="quick-ref">
+        <button class="ref-toggle" aria-label="Toggle quick reference sidebar">
+            <i class="fas fa-book"></i>
+            <span>Quick Reference</span>
+        </button>
+        <div class="ref-content">
+            <h4>Common Commands</h4>
+            <ul>
+                <li><code>?nosupport @user</code> - Apply no support role</li>
+                <li><code>?tags</code> - List available tags</li>
+                <li><code>!faq #4</code> - Show FAQ item 4</li>
+            </ul>
+            <h4>Response Templates</h4>
+            <button class="template-btn" data-template="ask-info" aria-label="Insert ask for more info template">Ask for more info</button>
+            <button class="template-btn" data-template="disable-adblock" aria-label="Insert ask to disable adblock template">Ask to disable adblock</button>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-container">
+        <div class="stat">
+            <span class="stat-number">8</span>
+            <span class="stat-label">Main Sections</span>
+        </div>
+        <div class="stat">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Guidelines</span>
+        </div>
+        <div class="stat">
+            <span class="stat-number">8</span>
+            <span class="stat-label">FAQs</span>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fab fa-discord"></i>
+                        <h3>Join Our Discord</h3>
+                        <p>Get instant support from our community helpers</p>
+                        <a href="https://discord.gg/hianime" class="contact-link" target="_blank" rel="noopener noreferrer">Join Discord Server</a>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Support</h3>
+                        <p>For detailed inquiries and special requests</p>
+                        <a href="mailto:support@hianime.com" class="contact-link">support@hianime.com</a>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-bug"></i>
+                        <h3>Report Issues</h3>
+                        <p>Found a bug or have suggestions?</p>
+                        <a href="https://hianime.to/report" class="contact-link" target="_blank" rel="noopener noreferrer">Submit Report</a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form id="contact-form" action="/submit-contact" method="post" novalidate>
+                        <div class="form-group">
+                            <input type="text" id="contact-name" name="name" placeholder="Your Name" required aria-label="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="contact-email" name="email" placeholder="Your Email" required aria-label="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <select id="contact-subject" name="subject" required aria-label="Select Subject">
+                                <option value="">Select Subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="bug">Bug Report</option>
+                                <option value="suggestion">Suggestion</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="contact-message" name="message" placeholder="Your Message" rows="5" required aria-label="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                    <div id="form-status" class="form-status" aria-live="polite"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h3><i class="fas fa-envelope-open-text"></i> Stay Updated</h3>
+                    <p>Subscribe to get the latest updates, new features, and community announcements.</p>
+                </div>
+                <div class="newsletter-form">
+                    <input type="email" id="newsletter-email" placeholder="Enter your email">
+                    <button id="newsletter-subscribe" class="subscribe-btn">
+                        <i class="fas fa-paper-plane"></i> Subscribe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>HiAnime Community</h3>
+                    <p>A professional and respectful community for anime enthusiasts to seek support and share their passion.</p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/hianime" class="social-link" aria-label="Discord" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
+                        <a href="https://twitter.com/hianime" class="social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://reddit.com/r/hianime" class="social-link" aria-label="Reddit" target="_blank" rel="noopener noreferrer"><i class="fab fa-reddit"></i></a>
+                        <a href="https://github.com/hianime" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#main-content">Home</a></li>
+                        <li><a href="#user-guidelines">User Guidelines</a></li>
+                        <li><a href="#helper-guidelines">Helper Guidelines</a></li>
+                        <li><a href="#support-forums">Support Forums</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Support Channels</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://discord.gg/hianime/ask-help" target="_blank" rel="noopener noreferrer">⁠ask-help (Support Queries)</a></li>
+                        <li><a href="https://discord.gg/hianime/faqs" target="_blank" rel="noopener noreferrer">⁠faqs (Pre-answered Questions)</a></li>
+                        <li><a href="https://discord.gg/hianime/status" target="_blank" rel="noopener noreferrer">⁠status (Website Updates)</a></li>
+                        <li><a href="https://discord.gg/hianime/general" target="_blank" rel="noopener noreferrer">⁠general (Community Chat)</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/hianime/malsync" target="_blank" rel="noopener noreferrer">MalSync Extension</a></li>
+                        <li><a href="https://hianime.to/browser-compatibility" target="_blank" rel="noopener noreferrer">Browser Compatibility</a></li>
+                        <li><a href="https://hianime.to/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                        <li><a href="https://hianime.to/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>© <span id="current-year"></span> HiAnime Community Support Guidelines. All rights reserved.</p>
+                    <p>This document is intended for internal community use only.</p>
+                </div>
+                <div class="footer-actions">
+                    <button id="back-to-top" class="back-to-top-btn" aria-label="Back to Top">
+                        <i class="fas fa-arrow-up"></i>
+                    </button>
+                    <div class="theme-indicator">
+                        <span id="theme-indicator-text">Light Mode</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+<script src="js/main.js" defer></script>
+</body>
+</html>
